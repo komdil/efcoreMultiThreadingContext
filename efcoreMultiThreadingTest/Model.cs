@@ -4,7 +4,7 @@ using System.Text;
 
 namespace EFCoreMultiThreading
 {
-    public class School
+    public class School : Entity, IEntity
     {
         public Guid Guid { get; set; }
         public string Name { get; set; }
@@ -12,7 +12,7 @@ namespace EFCoreMultiThreading
         public virtual ICollection<Student> Students { get; set; }
     }
 
-    public class Student
+    public class Student : Entity, IEntity
     {
         public Guid Guid { get; set; }
         public string FirstName { get; set; }
@@ -22,12 +22,22 @@ namespace EFCoreMultiThreading
         public virtual School School { get; set; }
         public virtual ICollection<Backpack> Backpacks { get; set; }
     }
-    public class Backpack
+    public class Backpack : Entity, IEntity
     {
         public Guid Guid { get; set; }
         public string Name { get; set; }
         public decimal Cost { get; set; }
         public Guid StudentGuid { get; set; }
         public virtual Student Student { get; set; }
+    }
+
+    public interface IEntity
+    {
+
+    }
+
+    public class Entity : IEntity
+    {
+
     }
 }

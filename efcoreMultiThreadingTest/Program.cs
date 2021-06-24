@@ -4,6 +4,7 @@ using System.Threading.Tasks;
 
 namespace EFCoreMultiThreading
 {
+
     class Program
     {
         static void Main(string[] args)
@@ -53,6 +54,4 @@ namespace EFCoreMultiThreading
             }
         }
     }
-
-
 }

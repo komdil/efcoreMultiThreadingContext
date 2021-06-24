@@ -44,9 +44,9 @@ namespace EFCoreMultiThreading
             base.OnModelCreating(modelBuilder);
         }
 
-        public IQueryable<T> GetEntities<T>() where T : class
+        public EntityQuery<T> GetEntities<T>() where T : class
         {
-            return Set<T>();
+            return new EntityQuery<T>(Set<T>().AsQueryable());
         }
     }
 }
