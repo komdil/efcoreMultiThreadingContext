@@ -14,6 +14,12 @@ namespace EFCoreMultiThreading
             var task1 = Task.Run(new Action(() => GetStudents(mainContext)));
             var task2 = Task.Run(new Action(() => GetBackpacks(mainContext)));
             Task.WaitAll(task1, task2);
+
+            var test = mainContext.GetEntities<Backpack>();
+            foreach (var item in test)
+            {
+
+            }
         }
 
         static void GetStudents(MainContext mainContext)

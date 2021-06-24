@@ -5,7 +5,6 @@ namespace System.Linq
 
     public static class EntityQueryExtensions
     {
-
         //
         // Summary:
         //     Returns the number of elements in a sequence.
@@ -728,6 +727,13 @@ namespace System.Linq
         {
             Query = query;
         }
-    }
 
+        public IEnumerator<T> GetEnumerator()
+        {
+            lock (Query.Provider)
+            {
+                return Query.GetEnumerator();
+            }
+        }
+    }
 }
