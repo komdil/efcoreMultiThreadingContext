@@ -1,22 +1,11 @@
-﻿using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.ChangeTracking;
-using Microsoft.EntityFrameworkCore.Metadata;
-using Microsoft.EntityFrameworkCore.Query;
-using Microsoft.EntityFrameworkCore.Query.Internal;
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
-using System.Linq.Expressions;
-using System.Text;
-using System.Threading;
-using System.Threading.Tasks;
+﻿using efcoreMultiThreadingContext;
+using Microsoft.EntityFrameworkCore;
 
-namespace EFCoreMultiThreading
+namespace EFCoreMultiThreadingContextTest
 {
-    public class MainContext : DbContext
+    public class TestDBContext : DbContext
     {
-        public MainContext()
+        public TestDBContext()
         {
             Database.EnsureCreated();
         }
@@ -46,7 +35,7 @@ namespace EFCoreMultiThreading
 
         public EntityQuery<T> GetEntities<T>() where T : class
         {
-            return new EntityQuery<T>(Set<T>().AsQueryable());
+            return new EntityQuery<T>(Set<T>());
         }
     }
 }

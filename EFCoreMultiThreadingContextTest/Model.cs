@@ -1,10 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
 
-namespace EFCoreMultiThreading
+namespace EFCoreMultiThreadingContextTest
 {
-    public class School : Entity, IEntity
+    public class School
     {
         public Guid Guid { get; set; }
         public string Name { get; set; }
@@ -12,7 +11,7 @@ namespace EFCoreMultiThreading
         public virtual ICollection<Student> Students { get; set; }
     }
 
-    public class Student : Entity, IEntity
+    public class Student
     {
         public Guid Guid { get; set; }
         public string FirstName { get; set; }
@@ -22,22 +21,12 @@ namespace EFCoreMultiThreading
         public virtual School School { get; set; }
         public virtual ICollection<Backpack> Backpacks { get; set; }
     }
-    public class Backpack : Entity, IEntity
+    public class Backpack
     {
         public Guid Guid { get; set; }
         public string Name { get; set; }
         public decimal Cost { get; set; }
         public Guid StudentGuid { get; set; }
         public virtual Student Student { get; set; }
-    }
-
-    public interface IEntity
-    {
-
-    }
-
-    public class Entity : IEntity
-    {
-
     }
 }
